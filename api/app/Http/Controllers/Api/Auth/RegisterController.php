@@ -11,6 +11,12 @@ use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
+    /**
+     * Device register invoke function
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function __invoke(Request $request): JsonResponse
     {
         $data = $request->only([
@@ -40,6 +46,11 @@ class RegisterController extends Controller
         ]);
     }
 
+    /**
+     * Device auth guard function
+     *
+     * @return \Illuminate\Contracts\Auth\Factory
+     */
     public function getAuthGuard()
     {
         return auth('device');

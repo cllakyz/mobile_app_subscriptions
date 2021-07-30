@@ -10,11 +10,20 @@ class DeviceRepository
 {
     private $device;
 
+    /**
+     * @param Device $device
+     */
     public function __construct(Device $device)
     {
         $this->device = $device;
     }
 
+    /**
+     * Device first or create function
+     *
+     * @param array $data
+     * @return mixed
+     */
     public function firstOrCreate(array $data)
     {
         return $this->device->firstOrCreate(

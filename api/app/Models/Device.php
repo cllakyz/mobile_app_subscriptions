@@ -31,6 +31,11 @@ class Device extends Model
         'updated_at',
     ];
 
+    /**
+     * Device subscriptions
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function subscriptions()
     {
         return $this->hasMany(Subscription::class);

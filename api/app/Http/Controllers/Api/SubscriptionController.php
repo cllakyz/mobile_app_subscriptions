@@ -11,11 +11,20 @@ class SubscriptionController extends Controller
 {
     protected $subscriptionService;
 
+    /**
+     * @param SubscriptionService $subscriptionService
+     */
     public function __construct(SubscriptionService $subscriptionService)
     {
         $this->subscriptionService = $subscriptionService;
     }
 
+    /**
+     * Device subscription purchase func.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function purchase(Request $request)
     {
         $data = $request->only(['receipt']);
@@ -49,6 +58,11 @@ class SubscriptionController extends Controller
         ], 201);
     }
 
+    /**
+     * Device subscription expire check function
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function check()
     {
         $device = auth('device')->user();

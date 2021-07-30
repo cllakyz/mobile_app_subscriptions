@@ -31,6 +31,11 @@ class Subscription extends Model
         'updated_at',
     ];
 
+    /**
+     * Subscription device
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function device()
     {
         return $this->belongsTo(Device::class);

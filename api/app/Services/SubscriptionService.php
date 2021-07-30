@@ -12,6 +12,11 @@ class SubscriptionService
     protected $purchaseService;
     protected $subscriptionSearchService;
 
+    /**
+     * @param SubscriptionRepository $subscriptionRepository
+     * @param PurchaseService $purchaseService
+     * @param SubscriptionSearchService $subscriptionSearchService
+     */
     public function __construct(SubscriptionRepository $subscriptionRepository, PurchaseService $purchaseService, SubscriptionSearchService $subscriptionSearchService)
     {
         $this->subscriptionRepository = $subscriptionRepository;
@@ -19,6 +24,13 @@ class SubscriptionService
         $this->subscriptionSearchService = $subscriptionSearchService;
     }
 
+    /**
+     * Device subscription purchase function
+     *
+     * @param $receipt
+     * @param Authenticatable $device
+     * @return array|null[]
+     */
     public function purchase($receipt, Authenticatable $device)
     {
         $response = $this->purchaseService->purchase($device, $receipt);
@@ -39,6 +51,12 @@ class SubscriptionService
         return [$subscription, $subData['expire_date']];
     }
 
+    /**
+     * Subscripton expire check function
+     *
+     * @param $device
+     * @return bool
+     */
     public function check($device)
     {
         $params = [

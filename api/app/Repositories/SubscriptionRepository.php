@@ -8,11 +8,20 @@ class SubscriptionRepository
 {
     protected $subscription;
 
+    /**
+     * @param Subscription $subscription
+     */
     public function __construct(Subscription $subscription)
     {
         $this->subscription = $subscription;
     }
 
+    /**
+     * Subcscription update or create function
+     *
+     * @param array $data
+     * @return mixed
+     */
     public function updateOrCreate(array $data)
     {
         return $this->subscription->updateOrCreate(
