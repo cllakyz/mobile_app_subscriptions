@@ -25,11 +25,9 @@ class ElasticsearchService
                 'body'  => $body
             ];
 
-            dd($this->client->search($params));
             return $this->client->search($params);
 
         } catch (\Exception $e) {
-            dd($e->getMessage());
             return null;
         }
     }
